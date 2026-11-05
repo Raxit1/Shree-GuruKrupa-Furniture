@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="robots" content="noindex">
+    <title>Admin | Shree Gurukrupa Furniture</title>
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font: 16px/1.5 system-ui, sans-serif;
+            background: #f1f1ec;
+            color: #17201e
+        }
+
+        header {
+            background: #12332e;
+            color: #fff;
+            padding: 14px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
+
+        header a {
+            color: #fff
+        }
+
+        .w {
+            max-width: 960px;
+            margin: auto;
+            padding: 20px
+        }
+
+        .box {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: grid;
+            gap: 10px
+        }
+
+        h2 {
+            margin: 0;
+            font-size: 1.15rem
+        }
+
+        input,
+        select,
+        textarea,
+        button {
+            font: inherit;
+            padding: 10px;
+            border: 1px solid #b9b5a8;
+            border-radius: 6px;
+            width: 100%
+        }
+
+        button {
+            background: #12332e;
+            color: #fff;
+            border: 0;
+            cursor: pointer;
+            width: auto;
+            padding: 10px 18px
+        }
+
+        button.d {
+            background: #a33
+        }
+
+        button.l {
+            background: #e6dfd2;
+            color: #17201e
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 16px
+        }
+
+        .tabs button {
+            background: #fff;
+            color: #17201e;
+            border: 1px solid #12332e
+        }
+
+        .tabs button.on {
+            background: #12332e;
+            color: #fff
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+            flex-wrap: wrap
+        }
+
+        .row>span {
+            flex: 1;
+            min-width: 200px;
+            overflow-wrap: anywhere
+        }
+
+        .th {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-top: 6px
+        }
+
+        .th div {
+            position: relative
+        }
+
+        .th img {
+            width: 56px;
+            height: 56px;
+            object-fit: cover;
+            border-radius: 6px
+        }
+
+        .th button {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            width: 20px;
+            height: 20px;
+            padding: 0;
+            border-radius: 50%;
+            background: #a33;
+            font-size: 12px
+        }
+
+        #err {
+            color: #a33;
+            font-weight: 600
+        }
+
+        #ok {
+            color: #1f7a45;
+            font-weight: 600
+        }
+
+        .hide {
+            display: none !important
+        }
+
+        .g2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px
+        }
+
+        @media(max-width:600px) {
+            .g2 {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header><b>Admin panel</b><a href="/">View website</a></header>
+    <div class="w">
+        <form id="login" class="box">
+            <h2>Log in</h2><input id="u" placeholder="Username" autocomplete="username" required><input id="p"
+                type="password" placeholder="Password" autocomplete="current-password" required><button>Log in</button>
+        </form>
+        <div id="app" class="hide">
+            <div class="tabs" id="tabs"><button data-t="items" class="on">Furniture and projects</button><button
+                    data-t="docs">Documents</button><button data-t="enq">Enquiries</button><button data-t="set">Website
+                    details</button><button id="out" class="l">Log out</button></div>
+            <div id="t-items">
+                <form id="add" class="box">
+                    <h2 id="fh">Add new</h2><input type="hidden" name="id">
+                    <div class="g2"><select name="kind">
+                            <option value="product">Furniture product</option>
+                            <option value="project">Completed project</option>
+                        </select><input name="category" list="cl" placeholder="Category (e.g. Wardrobes)"></div>
+                    <datalist id="cl"></datalist><input name="title" placeholder="Title" required><textarea
+                        name="description" rows="2" placeholder="Short description"></textarea>
+                    <div class="g2"><input name="location" placeholder="Location (projects)"><input name="details"
+                            placeholder="Extra details (e.g. work done, material)"></div>
+                    <label>Photos (JPG, PNG, WebP, up to 10 MB each)<input name="files" type="file" multiple
+                            accept="image/jpeg,image/png,image/webp"></label>
+                    <label id="pubL" class="hide"><input name="published" type="checkbox" checked style="width:auto">
+                        Show on website</label>
+                    <div><button>Save</button> <button type="button" class="l hide" id="cancel">Cancel edit</button>
+                    </div>
+                </form>
+                <div class="box">
+                    <h2>Published and hidden items</h2>
+                    <div id="items"></div>
+                </div>
+            </div>
+            <div id="t-docs" class="hide">
+                <form id="docf" class="box">
+                    <h2>Upload a document (PDF)</h2><input name="title" placeholder="Title, e.g. Product catalogue"
+                        required><input name="file" type="file" accept="application/pdf"
+                        required><button>Upload</button>
+                </form>
+                <div class="box">
+                    <h2>Documents</h2>
+                    <div id="dl"></div>
+                </div>
+            </div>
+            <div id="t-enq" class="hide box">
+                <h2>Customer enquiries</h2>
+                <div id="enq"></div>
+            </div>
+            <form id="t-set" class="hide box">
+                <h2>Website details</h2><input name="phone" placeholder="Phone"><input name="whatsapp"
+                    placeholder="WhatsApp number with country code, no +"><input name="email" placeholder="Email"><input
+                    name="address" placeholder="Address"><input name="hours" placeholder="Opening hours"><button>Save
+                    details</button>
+            </form>
+        </div>
+        <p id="err" role="alert"></p>
+        <p id="ok" role="status"></p>
+    </div>
+    <script src="/js/admin.js"></script>
+</body>
+
+</html>

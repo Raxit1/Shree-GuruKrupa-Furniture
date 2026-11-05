@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Shree Gurukrupa Furniture | Turnkey furniture and interiors, Ahmedabad</title>
+    <meta name="description"
+        content="Custom furniture and turnkey interior projects in Ahmedabad: design, manufacturing, delivery and installation by one team.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Figtree:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <header id="hd">
+        <div class="wrap bar"><a class="logo" href="#top">Shree Gurukrupa Furniture</a>
+            <button id="mb" aria-expanded="false" aria-controls="nav">Menu</button>
+            <nav id="nav"><a href="#process">Turnkey work</a><a href="#furniture">Furniture</a><a
+                    href="#projects">Projects</a><a href="#contact">Contact</a></nav>
+        </div>
+    </header>
+    <main id="top">
+        <section class="hero">
+            <div class="wrap">
+                <h1>Furniture and interiors, made and fitted by one team</h1>
+                <p>From the first measurement to the final handover, we design, build, deliver and install. You deal
+                    with one team and one schedule.</p>
+                <a class="btn" href="#contact">Get a free quote</a><a class="btn ghost" href="#projects">See our
+                    projects</a>
+            </div>
+        </section>
+
+        <section id="process">
+            <div class="wrap">
+                <h2>Turnkey projects, start to finish</h2>
+                <p class="lead">For homes, offices and shops. Every stage is handled by us, so you don't have to
+                    coordinate several vendors.</p>
+                <ol class="steps" id="steps">
+                    <li>
+                        <h3>Site visit</h3>
+                        <p>We measure the space and listen to your needs and budget.</p>
+                    </li>
+                    <li>
+                        <h3>Design and quote</h3>
+                        <p>Layouts, material choices and a clear, itemised price.</p>
+                    </li>
+                    <li>
+                        <h3>Manufacturing</h3>
+                        <p>Built in our workshop with quality-checked boards and hardware.</p>
+                    </li>
+                    <li>
+                        <h3>Delivery and fitting</h3>
+                        <p>Our own team delivers, installs and cleans up.</p>
+                    </li>
+                    <li>
+                        <h3>Handover and care</h3>
+                        <p>A final walkthrough and support after the work is done.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section id="furniture" class="tint">
+            <div class="wrap">
+                <h2>Furniture we make</h2>
+                <p class="lead">Every piece is made to your measurements, finish and budget. Tap a photo to see it
+                    larger.</p>
+                <div class="chips" id="chips" role="group" aria-label="Filter furniture"></div>
+                <div class="grid" id="products"></div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="wrap">
+                <h2>Completed projects</h2>
+                <p class="lead">Full turnkey work, from empty rooms to finished spaces.</p>
+                <div class="grid" id="projs"></div>
+                <h3 class="sub">Downloads</h3>
+                <div class="docs" id="docs"></div>
+            </div>
+        </section>
+
+        <section id="contact" class="tint">
+            <div class="wrap two">
+                <div>
+                    <h2>Tell us what you need</h2>
+                    <p class="lead">Share your requirement and we will call you to arrange a free site visit.</p>
+                    <p class="info"><b>Phone</b><a id="cPhone" href="#"></a><b>Email</b><a id="cMail"
+                            href="#"></a><b>Address</b><span id="cAddr"></span><b>Hours</b><span id="cHrs"></span></p>
+                </div>
+                <form id="f"><input name="name" placeholder="Your name" required minlength="2" maxlength="100"
+                        autocomplete="name">
+                    <input name="phone" placeholder="Phone number" required type="tel" pattern="[+\d\s\-]{7,15}"
+                        autocomplete="tel">
+                    <textarea name="message" id="msg" rows="4" maxlength="1000"
+                        placeholder="What do you want made? e.g. 3BHK full furniture, modular kitchen"></textarea>
+                    <button class="btn" id="send">Send request</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="wrap foot"><span>&copy; <span id="y"></span> Shree Gurukrupa Furniture, Ahmedabad</span><a
+                href="/admin.html">Admin login</a></div>
+    </footer>
+    <a class="fab" id="wa" href="#" target="_blank" rel="noopener">WhatsApp us</a>
+    <div id="lb" class="lb" hidden role="dialog" aria-modal="true" aria-label="Photo viewer"><button id="lx"
+            aria-label="Close">&times;</button>
+        <button id="lp" aria-label="Previous">&#8249;</button><img id="li" alt=""><button id="ln"
+            aria-label="Next">&#8250;</button>
+    </div>
+    <div id="toast" role="status"></div>
+    <script src="/js/site.js"></script>
+</body>
+
+</html>
